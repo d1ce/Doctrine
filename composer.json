@@ -16,6 +16,28 @@
 		"email": "filip@prochazka.su",
 		"issues": "https://github.com/kdyby/doctrine/issues"
 	},
+	"repositories": [
+		{
+			"type": "vcs",
+			"url": "https://github.com/d1ce/doctrine2"
+		},
+		{
+			"type": "vcs",
+			"url": "https://github.com/d1ce/DoctrineCache"
+		},
+		{
+			"type": "vcs",
+			"url": "https://github.com/d1ce/Annotations"
+		},
+		{
+			"type": "vcs",
+			"url": "https://github.com/d1ce/Events"
+		},
+		{
+			"type": "vcs",
+			"url": "https://github.com/d1ce/Doctrine"
+		}
+	],
 	"require": {
 		"nette/di": "~2.3@dev",
 		"nette/neon": "~2.3@dev",

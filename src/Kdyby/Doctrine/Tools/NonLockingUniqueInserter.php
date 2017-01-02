@@ -285,18 +285,18 @@ class NonLockingUniqueInserter extends Nette\Object
 	private function getDiscriminatorColumn(ClassMetadata $meta)
 	{
 		if (!$meta->isInheritanceTypeSingleTable()) {
-			return [];
+			return array();
 		}
 
 		$column = $meta->discriminatorColumn;
 
-		return [
-			$column['fieldName'] => [
+		return array(
+			$column['fieldName'] => array(
 				'value' => $meta->discriminatorValue,
 				'quotedColumn' => $this->platform->quoteIdentifier($column['name']),
 				'type' => Type::getType($column['type']),
-			],
-		];
+			),
+		);
 	}
 
 }

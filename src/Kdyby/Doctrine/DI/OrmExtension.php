@@ -437,7 +437,7 @@ class OrmExtension extends Nette\DI\CompilerExtension
 		$builder->addDefinition($this->prefix('repositoryFactory.' . $name . '.defaultRepositoryFactory'))
 				->setClass($config['defaultRepositoryClassName'])
 				->setImplement('Kdyby\Doctrine\DI\IRepositoryFactory')
-				->setArguments([new Code\PhpLiteral('$entityManager'), new Code\PhpLiteral('$classMetadata')])
+				->setArguments(array(new Code\PhpLiteral('$entityManager'), new Code\PhpLiteral('$classMetadata')))
 				->setParameters(array('Doctrine\ORM\EntityManagerInterface entityManager', 'Doctrine\ORM\Mapping\ClassMetadata classMetadata'))
 				->setAutowired(FALSE);
 
@@ -557,7 +557,7 @@ class OrmExtension extends Nette\DI\CompilerExtension
 			->setInject(FALSE);
 
 		if ($this->isTracyPresent()) {
-			$connection->addSetup('$panel = ?->bindConnection(?)', [$this->prefix('@' . $name . '.diagnosticsPanel'), '@self']);
+			$connection->addSetup('$panel = ?->bindConnection(?)', array($this->prefix('@' . $name . '.diagnosticsPanel'), '@self'));
 		}
 
 		/** @var Nette\DI\ServiceDefinition $connection */
@@ -734,7 +734,7 @@ class OrmExtension extends Nette\DI\CompilerExtension
 
 			} else {
 				$entityArgument = new Code\PhpLiteral('"%entityName%"');
-				$this->postCompileRepositoriesQueue[$boundManagers[0]][] = [ltrim($originalDef->class, '\\'), $originalServiceName];
+				$this->postCompileRepositoriesQueue[$boundManagers[0]][] = array(ltrim($originalDef->class, '\\'), $originalServiceName);
 			}
 
 			$builder->removeDefinition($originalServiceName);
@@ -798,7 +798,7 @@ class OrmExtension extends Nette\DI\CompilerExtension
 			/** @var Doctrine\ORM\Mapping\ClassMetadata $entityMetadata */
 			$metadataFactory = $entityManager->getMetadataFactory();
 
-			$allMetadata = [];
+			$allMetadata = array();
 			foreach ($metadataFactory->getAllMetadata() as $entityMetadata) {
 				if ($config['defaultRepositoryClassName'] === $entityMetadata->customRepositoryClassName || empty($entityMetadata->customRepositoryClassName)) {
 					continue;

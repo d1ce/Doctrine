@@ -56,7 +56,7 @@ abstract class QueryObject extends Nette\Object implements Kdyby\Persistence\Que
 	/**
 	 * @var array
 	 */
-	public $onPostFetch = [];
+	public $onPostFetch = array();
 
 	/**
 	 * @var \Doctrine\ORM\Query

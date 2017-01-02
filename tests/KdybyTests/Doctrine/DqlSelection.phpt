@@ -43,7 +43,7 @@ class DqlSelectionTest extends KdybyTests\Doctrine\ORMTestCase
 
 	protected function setUp()
 	{
-		$this->em = EntityManagerMock::create(new ConnectionMock([], new DriverMock()));
+		$this->em = EntityManagerMock::create(new ConnectionMock(array(), new DriverMock()));
 	}
 
 

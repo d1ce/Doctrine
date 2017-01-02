@@ -32,7 +32,7 @@ class CacheCleaner extends Nette\Object
 	/**
 	 * @var array|ClearableCache[]
 	 */
-	private $cacheStorages = [];
+	private $cacheStorages = array();
 
 
 

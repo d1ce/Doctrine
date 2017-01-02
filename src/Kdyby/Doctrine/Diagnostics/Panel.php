@@ -80,7 +80,7 @@ class Panel extends Nette\Object implements IBarPanel, Doctrine\DBAL\Logging\SQL
 	/**
 	 * @var array
 	 */
-	private $whitelistExceptions = [];
+	private $whitelistExceptions = array();
 
 	/**
 	 * @var Doctrine\ORM\UnitOfWork
@@ -273,7 +273,7 @@ class Panel extends Nette\Object implements IBarPanel, Doctrine\DBAL\Logging\SQL
 			return '';
 		}
 
-		return Dumper::toHtml($statistics, [Dumper::DEPTH => 5]);
+		return Dumper::toHtml($statistics, array(Dumper::DEPTH => 5));
 	}
 
 
@@ -400,24 +400,24 @@ class Panel extends Nette\Object implements IBarPanel, Doctrine\DBAL\Logging\SQL
 			$UoW = $this->unitOfWorkSnapshot ?: $this->em->getUnitOfWork();
 
 			$panel = '<div class="inner"><p><b>IdentityMap</b></p>' .
-				Dumper::toHtml($UoW->getIdentityMap(), [Dumper::COLLAPSE => TRUE]) .
+				Dumper::toHtml($UoW->getIdentityMap(), array(Dumper::COLLAPSE => TRUE)) .
 				'</div>';
 
 			if ($scheduled = $UoW->getScheduledEntityInsertions()) {
 				$panel .= '<div class="inner"><p><b>Scheduled entity insertions</b></p>' .
-					Dumper::toHtml($scheduled, [Dumper::COLLAPSE => TRUE]) .
+					Dumper::toHtml($scheduled, array(Dumper::COLLAPSE => TRUE)) .
 					'</div>';
 			}
 
 			if ($scheduled = $UoW->getScheduledEntityDeletions()) {
 				$panel .= '<div class="inner"><p><b>Scheduled entity deletions</b></p>' .
-					Dumper::toHtml($scheduled, [Dumper::COLLAPSE => TRUE]) .
+					Dumper::toHtml($scheduled, array(Dumper::COLLAPSE => TRUE)) .
 					'</div>';
 			}
 
 			if ($scheduled = $UoW->getScheduledEntityUpdates()) {
 				$panel .= '<div class="inner"><p><b>Scheduled entity updates</b></p>' .
-					Dumper::toHtml($scheduled, [Dumper::COLLAPSE => TRUE]) .
+					Dumper::toHtml($scheduled, array(Dumper::COLLAPSE => TRUE)) .
 					'</div>';
 			}
 

@@ -110,7 +110,7 @@ class NonLockingUniqueInserterTest extends KdybyTests\Doctrine\ORMTestCase
 		Assert::true($em->isOpen());
 		$em->clear();
 
-		$row = $em->getConnection()->fetchAssoc('SELECT * FROM sti_users WHERE id = :id', [ 'id' => $boss->id ]);
+		$row = $em->getConnection()->fetchAssoc('SELECT * FROM sti_users WHERE id = :id', array('id' => $boss->id));
 		Assert::equal('boss', $row['type']);
 	}
 

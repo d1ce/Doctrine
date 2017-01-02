@@ -12,4 +12,4 @@ travis < common:
 
 localhost < common:
 	doctrine:
-		password: "heslo"
+		password: ""
